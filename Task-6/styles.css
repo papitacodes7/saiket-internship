@@ -1,0 +1,791 @@
+/* Base styles */
+/* Root variables for theme colors and spacing */
+:root {
+  /* Custom properties for consistent theming */
+  --color-primary: #2563eb; /* Primary color */
+  --color-primary-light: #3b82f6; /* Lighter shade of primary color */
+  --color-primary-dark: #1d4ed8; /* Darker shade of primary color */
+  --color-gray-50: #f9fafb; /* Very light gray */
+  --color-gray-100: #f3f4f6; /* Light gray */
+  --color-gray-200: #e5e7eb; /* Slightly darker gray */
+  --color-gray-300: #d1d5db; /* Medium light gray */
+  --color-gray-400: #9ca3af; /* Medium gray */
+  --color-gray-500: #6b7280; /* Medium dark gray */
+  --color-gray-600: #4b5563; /* Darker gray */
+  --color-gray-700: #374151; /* Very dark gray */
+  --color-gray-800: #1f2937; /* Very dark gray */
+  --color-gray-900: #111827; /* Black */
+}
+
+/* Reset default browser styles and set box-sizing */
+* {
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  box-sizing: border-box; /* Include border and padding in element size */
+}
+
+/* Enable smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+/* Set base font and background for the body */
+body {
+  font-family: 'Inter', sans-serif; /* Set font family */
+  line-height: 1.5; /* Set line height for better readability */
+  color: var(--color-gray-900); /* Text color */
+  background-color: var(--color-gray-50); /* Background color */
+}
+
+/* Main container for page content */
+.container {
+  max-width: 1200px; /* Maximum width for the container */
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 0 1.5rem; /* Padding on both sides */
+}
+
+/* Typography */
+/* Headings styling for consistent look */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700; /* Bold weight for all headings */
+  line-height: 1.2; /* Specific line height for headings */
+}
+
+/* Buttons */
+/* Shared button styles */
+.btn {
+  display: inline-flex; /* Inline flexbox layout */
+  align-items: center; /* Align items vertically */
+  justify-content: center; /* Align items horizontally */
+  padding: 0.75rem 1.5rem; /* Padding inside the button */
+  border-radius: 0.375rem; /* Border radius for rounded corners */
+  font-weight: 500; /* Font weight for the button text */
+  transition: all 0.2s; /* Smooth transition for all properties */
+  cursor: pointer; /* Pointer cursor on hover */
+  border: none; /* No border */
+}
+
+/* Primary button style */
+.btn-primary {
+  background-color: var(--color-primary); /* Background color for primary button */
+  color: white; /* Text color for primary button */
+}
+
+/* Primary button hover effect */
+.btn-primary:hover {
+  background-color: var(--color-primary-dark); /* Darker background color on hover */
+}
+
+/* Secondary button style */
+.btn-secondary {
+  background-color: white; /* White background for secondary button */
+  color: var(--color-gray-700); /* Gray text color for secondary button */
+  border: 1px solid var(--color-gray-300); /* Light gray border */
+}
+
+/* Secondary button hover effect */
+.btn-secondary:hover {
+  background-color: var(--color-gray-50); /* Slightly darker gray background on hover */
+}
+
+/* Navigation */
+/* Fixed navbar at the top */
+.navbar {
+  position: fixed; /* Fixed at the top of the page */
+  top: 0; /* At the top */
+  left: 0; /* At the left */
+  right: 0; /* At the right */
+  background-color: white; /* White background */
+  padding: 1rem 0; /* Padding at the top and bottom */
+  z-index: 1000; /* High z-index to ensure it stays on top */
+  transition: all 0.3s; /* Smooth transition for all properties */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Navbar content layout */
+.navbar .container {
+  display: flex; /* Flexbox layout */
+  justify-content: space-between; /* Space between items */
+  align-items: center; /* Align items vertically */
+}
+
+/* Logo styling in navbar */
+.nav-logo {
+  display: flex; /* Flexbox layout */
+  align-items: center; /* Align items vertically */
+  font-weight: 700; /* Bold weight for the logo text */
+  font-size: 1.25rem; /* Font size for the logo text */
+  color: var(--color-gray-900); /* Text color for the logo */
+}
+
+/* Logo icon color and spacing */
+.logo-icon {
+  color: var(--color-primary); /* Primary color for the logo icon */
+  margin-right: 0.5rem; /* Margin to the right of the icon */
+}
+
+/* Navigation links layout */
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Navigation link styles */
+.nav-links a {
+  color: var(--color-gray-700); /* Text color for nav links */
+  text-decoration: none; /* No underline */
+  transition: color 0.2s; /* Smooth transition for text color */
+  margin-top: 0.5rem; /* Margin to the top */
+}
+
+/* Navigation link hover effect */
+.nav-links a:hover { 
+  color: var(--color-primary); /* Primary color on hover */
+}
+
+/* Hamburger menu button for mobile */
+.mobile-menu-btn {
+  display: none; /* Hidden by default */
+  background: none; /* No background */
+  border: none; /* No border */
+  cursor: pointer; /* Pointer cursor */
+  padding: 0.5rem; /* Padding inside the button */
+}
+
+/* Hamburger icon lines */
+.mobile-menu-btn span {
+  display: block; /* Block display */
+  width: 24px; /* Width of the hamburger icon */
+  height: 2px; /* Height of the hamburger icon */
+  background-color: var(--color-gray-900); /* Text color for the hamburger icon */
+  margin: 4px 0; /* Margin around the hamburger icon */
+  transition: all 0.3s; /* Smooth transition for all properties */
+}
+
+/* Hero Section */
+/* Main hero area with grid layout */
+.hero {
+  padding: 8rem 0 4rem; /* Padding around the hero section */
+}
+
+/* Hero section grid for image and content */
+.hero .container {
+  display: grid; /* Grid layout */
+  grid-template-columns: 1fr 1fr; /* Two columns */
+  gap: 4rem; /* Gap between columns */
+  align-items: center; /* Align items vertically */
+}
+
+/* Hero heading styles */
+.hero-content h1 {
+  font-size: 3rem; /* Font size for the main heading */
+  margin-bottom: 1.5rem; /* Margin below the heading */
+}
+
+/* Highlighted span in hero heading */
+.hero-content h1 span {
+  color: var(--color-primary); /* Primary color for the heading span */
+}
+
+/* Hero paragraph styling */
+.hero-content p {
+  color: var(--color-gray-600); /* Text color for the paragraph */
+  margin-bottom: 2rem; /* Margin below the paragraph */
+  font-size: 1.125rem; /* Font size for the paragraph */
+}
+
+/* List of hero features */
+.hero-features {
+  margin-bottom: 2rem; /* Margin below the features list */
+}
+
+/* Individual feature item in hero */
+.feature-item {
+  display: flex; /* Flexbox layout */
+  align-items: center; /* Align items vertically */
+  margin-bottom: 1rem; /* Margin below each feature item */
+}
+
+/* Check icon for features */
+.check-icon {
+  background-color: #dbeafe; /* Light blue background for the check icon */
+  color: var(--color-primary); /* Primary color for the check icon */
+  width: 1.5rem; /* Width of the check icon */
+  height: 1.5rem; /* Height of the check icon */
+  border-radius: 50%; /* Rounded corners */
+  display: flex; /* Flexbox layout */
+  align-items: center; /* Align items vertically */
+  justify-content: center; /* Align items horizontally */
+  margin-right: 0.75rem; /* Margin to the right of the check icon */
+  font-size: 0.875rem; /* Font size for the check icon */
+}
+
+/* Hero section buttons */
+.hero-buttons {
+  display: flex; /* Flexbox layout */
+  gap: 1rem; /* Gap between buttons */
+}
+
+/* Hero image container */
+.hero-image {
+  position: relative; /* Relative positioning */
+}
+
+/* Hero image styling and hover effect */
+.hero-image img {
+  width: 100%; /* Full width */
+  border-radius: 0.75rem; /* Rounded corners */
+  transform: rotate(1deg); /* Slight rotation */
+  transition: transform 0.3s; /* Smooth transition for rotation */
+}
+
+/* Remove rotation on hover for hero image */
+.hero-image:hover img {
+  transform: rotate(0); /* Reset rotation on hover */
+}
+
+/* Stats card overlay on hero image */
+.stats-card {
+  position: absolute; /* Absolute positioning */
+  bottom: -1rem; /* Position from the bottom */
+  right: -1rem; /* Position from the right */
+  background-color: white; /* White background */
+  padding: 1rem; /* Padding inside the card */
+  border-radius: 0.5rem; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Stats number in hero */
+.stats-number {
+  font-weight: 600; /* Semi-bold weight for the number */
+  color: var(--color-gray-900); /* Text color for the number */
+}
+
+/* Stats label in hero */
+.stats-label {
+  font-size: 0.875rem; /* Font size for the label */
+  color: var(--color-gray-500); /* Text color for the label */
+}
+
+/* Features Section */
+/* Features section background and spacing */
+.features {
+  padding: 4rem 0; /* Padding around the features section */
+  background-color: white; /* White background */
+}
+
+/* Section header for features */
+.section-header {
+  text-align: center; /* Centered text */
+  max-width: 48rem; /* Maximum width for the header */
+  margin: 0 auto 4rem; /* Margin around the header */
+}
+
+/* Features section heading */
+.section-header h2 {
+  font-size: 2.25rem; /* Font size for the subheading */
+  margin-bottom: 1rem; /* Margin below the subheading */
+}
+
+/* Features section description */
+.section-header p {
+  color: var(--color-gray-600); /* Text color for the paragraph */
+  font-size: 1.125rem; /* Font size for the paragraph */
+}
+
+/* Responsive grid for feature cards */
+.features-grid {
+  display: grid; /* Grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid columns */
+  gap: 2rem; /* Gap between grid items */
+}
+
+/* Individual feature card styling */
+.feature-card {
+  padding: 1.8rem; /* Padding inside the card */
+  border-radius: 0.5rem; /* Rounded corners */
+  background-color: white; /* White background */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-top: 4px solid transparent; /* Transparent top border */
+  transition: all 0.3s; /* Smooth transition for all properties */
+  cursor: pointer; /* Pointer cursor */
+}
+
+/* Feature card hover effect */
+.feature-card:hover {
+  transform: translateY(-4px);/* Lift the card up on hover */
+  border-top-color: var(--color-primary); /* Primary color for the top border on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Darker shadow on hover */
+}
+
+/* Feature icon styling */
+.feature-icon {
+  font-size: 1.5rem; /* Font size for the feature icon */
+  margin-bottom: 1rem; /* Margin below the icon */
+}
+
+/* Feature card heading */
+.feature-card h3 {
+  margin-bottom: 0.5rem; /* Margin below the heading */
+}
+
+/* Feature card description */
+.feature-card p {
+  color: var(--color-gray-600); /* Text color for the paragraph */
+}
+
+/* Testimonials Section */
+/* Testimonials section background and spacing */
+.testimonials {
+  padding: 4rem 0; /* Padding around the testimonials section */
+  background-color: var(--color-gray-50); /* Light gray background */
+}
+
+/* Testimonials slider container */
+.testimonials-slider {
+  max-width: 48rem; /* Maximum width for the slider */
+  margin: 0 auto; /* Center the slider */
+  position: relative; /* Relative positioning */
+}
+
+/* Individual testimonial card */
+.testimonial-card {
+  background-color: white; /* White background */
+  padding: 2rem; /* Padding inside the card */
+  border-radius: 0.75rem; /* Rounded corners */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Testimonial content grid */
+.testimonial-content {
+  display: grid; /* Grid layout */
+  grid-template-columns: auto 1fr; /* Two columns */
+  gap: 2rem; /* Gap between columns */
+}
+
+/* Testimonial avatar image */
+.testimonial-avatar {
+  width: 5rem; /* Width of the avatar */
+  height: 5rem; /* Height of the avatar */
+  border-radius: 50%; /* Rounded corners */
+  object-fit: cover; /* Cover the entire area */
+}
+
+/* Testimonial info section */
+.testimonial-info h3 {
+  margin-bottom: 0.25rem; /* Margin below the name */
+}
+
+/* Testimonial role text */
+.testimonial-info .role {
+  color: var(--color-gray-600); /* Text color for the role */
+  margin-bottom: 0.25rem; /* Margin below the role */
+}
+
+/* Testimonial company text */
+.testimonial-info .company {
+  color: var(--color-gray-500); /* Text color for the company */
+  font-size: 0.875rem; /* Font size for the company */
+  margin-bottom: 0.5rem; /* Margin below the company */
+}
+
+/* Star rating color */
+.rating {
+  color: #f59e0b; /* Yellow color for the rating */
+  margin-bottom: 1rem; /* Margin below the rating */
+}
+
+/* Testimonial quote styling */
+.testimonial-content blockquote {
+  grid-column: span 2; /* Span two columns */
+  font-style: italic; /* Italic text */
+  color: var(--color-gray-600); /* Text color for the testimonial */
+  position: relative; /* Relative positioning */
+  padding-left: 2rem; /* Padding to the left */
+}
+
+/* Decorative quote mark before testimonial */
+.testimonial-content blockquote::before {
+  content: '"'; /* Opening quote */
+  position: absolute; /* Absolute positioning */
+  left: 0; /* Position from the left */
+  top: -0.5rem; /* Position from the top */
+  font-size: 4rem; /* Font size for the quote */
+  color: var(--color-primary); /* Primary color for the quote */
+  opacity: 0.2; /* Low opacity */
+  line-height: 1; /* Line height */
+}
+
+/* Slider controls for testimonials */
+.slider-controls {
+  display: flex; /* Flexbox layout */
+  align-items: center; /* Align items vertically */
+  justify-content: center; /* Align items horizontally */
+  margin-top: 2rem; /* Margin above the controls */
+  gap: 1rem; /* Gap between controls */
+}
+
+/* Previous/next slider buttons */
+.prev-btn,
+.next-btn {
+  background: none; /* No background */
+  border: 1px solid var(--color-gray-300); /* Light gray border */
+  width: 2.5rem; /* Width of the button */
+  height: 2.5rem; /* Height of the button */
+  border-radius: 50%; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor */
+  transition: all 0.2s; /* Smooth transition for all properties */
+}
+
+/* Hover effect for slider buttons */
+.prev-btn:hover,
+.next-btn:hover {
+  background-color: var(--color-gray-100); /* Lighter gray background on hover */
+}
+
+/* Slider dots for navigation */
+.slider-dots {
+  display: flex; /* Flexbox layout */
+  gap: 0.5rem; /* Gap between dots */
+}
+
+/* Individual slider dot */
+.slider-dots button {
+  width: 0.5rem; /* Width of the dot */
+  height: 0.5rem; /* Height of the dot */
+  border-radius: 50%; /* Rounded corners */
+  background-color: var(--color-gray-300); /* Light gray background */
+  border: none; /* No border */
+  padding: 0; /* No padding */
+  cursor: pointer; /* Pointer cursor */
+  transition: all 0.2s; /* Smooth transition for all properties */
+}
+
+/* Active slider dot */
+.slider-dots button.active {
+  background-color: var(--color-primary); /* Primary color for the active dot */
+}
+
+/* Contact Section */
+/* Contact section background and spacing */
+.contact {
+  padding: 4rem 0; /* Padding around the contact section */
+  background-color: white; /* White background */
+}
+
+/* Contact section grid for info and form */
+.contact-grid {
+  display: grid; /* Grid layout */
+  grid-template-columns: 1fr 2fr; /* Two columns */
+  gap: 3rem; /* Gap between columns */
+}
+
+/* Contact info box styling */
+.contact-info {
+  background-color: var(--color-gray-50); /* Light gray background */
+  padding: 2rem; /* Padding inside the info section */
+  border-radius: 0.75rem; /* Rounded corners */
+  height: fit-content; /* Content-based height */
+}
+
+/* Contact info heading */
+.contact-info h3 {
+  margin-bottom: 2rem; /* Margin below the heading */
+}
+
+/* List of contact info items */
+.info-items {
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Column direction */
+  gap: 1.5rem; /* Gap between items */
+}
+
+/* Individual contact info item */
+.info-item {
+  display: flex; /* Flexbox layout */
+  align-items: flex-start; /* Align items at the start */
+  gap: 1rem; /* Gap between items */
+}
+
+/* Icon for contact info */
+.info-icon {
+  background-color: #dbeafe; /* Light blue background */
+  color: var(--color-primary); /* Primary color */
+  width: 2.5rem; /* Width of the icon */
+  height: 2.5rem; /* Height of the icon */
+  border-radius: 50%; /* Rounded corners */
+  display: flex; /* Flexbox layout */
+  align-items: center; /* Align items vertically */
+  justify-content: center; /* Align items horizontally */
+}
+
+/* Label for contact info */
+.info-item .label {
+  font-weight: 500; /* Semi-bold weight for the label */
+  color: var(--color-gray-900); /* Text color for the label */
+  margin-bottom: 0.25rem; /* Margin below the label */
+}
+
+/* Contact form container */
+.contact-form {
+  background-color: white; /* White background */
+  padding: 2rem; /* Padding inside the form */
+  border-radius: 0.75rem; /* Rounded corners */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Grid layout for form fields */
+.form-grid {
+  display: grid; /* Grid layout */
+  grid-template-columns: 1fr 1fr; /* Two columns */
+  gap: 1.5rem; /* Gap between columns */
+  margin-bottom: 1.5rem; /* Margin below the form grid */
+}
+
+/* Individual form group */
+.form-group {
+  margin-bottom: 1.5rem; /* Margin below each form group */
+}
+
+/* Form label styling */
+.form-group label {
+  display: block; /* Block display */
+  font-size: 0.875rem; /* Font size for the label */
+  font-weight: 500; /* Semi-bold weight for the label */
+  color: var(--color-gray-700); /* Text color for the label */
+  margin-bottom: 0.5rem; /* Margin below the label */
+}
+
+/* Input and textarea styling in form */
+.form-group input,
+.form-group textarea {
+  width: 100%; /* Full width */
+  padding: 0.75rem; /* Padding inside the input/textarea */
+  border: 1px solid var(--color-gray-300); /* Light gray border */
+  border-radius: 0.375rem; /* Rounded corners */
+  transition: all 0.2s; /* Smooth transition for all properties */
+}
+
+/* Focus state for input and textarea */
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none; /* No outline on focus */
+  border-color: var(--color-primary); /* Primary color for the border on focus */
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); /* Subtle shadow on focus */
+}
+
+/* Error message styling for form validation */
+.error-message {
+  display: block; /* Block display */
+  color: #dc2626; /* Red color for error messages */
+  font-size: 0.875rem; /* Font size for error messages */
+  margin-top: 0.25rem; /* Margin above error messages */
+}
+
+/* Footer */
+/* Footer background and text color */
+.footer {
+  background-color: var(--color-gray-900); /* Dark gray background */
+  color: white; /* White text */
+  padding: 4rem 0 2rem; /* Padding around the footer */
+}
+
+/* Footer content grid layout */
+.footer-content {
+  display: grid; /* Grid layout */
+  grid-template-columns: 1fr 2fr; /* Two columns */
+  gap: 4rem; /* Gap between columns */
+  margin-bottom: 3rem; /* Margin below the content */
+}
+
+/* Brand section in footer */
+.footer-brand {
+  max-width: 20rem; /* Maximum width for the brand section */
+}
+
+/* Footer logo layout */
+.footer-logo {
+  display: flex; /* Flexbox layout */
+  align-items: center; /* Align items vertically */
+  margin-bottom: 1rem; /* Margin below the logo */
+}
+
+/* Logo icon spacing in footer */
+.footer-logo .logo-icon {
+  margin-right: 0.5rem; /* Margin to the right of the icon */
+}
+
+/* Footer brand description */
+.footer-brand p {
+  color: var(--color-gray-400); /* Text color for the paragraph */
+  margin-bottom: 1.5rem; /* Margin below the paragraph */
+}
+
+/* Social media links in footer */
+.social-links {
+  display: flex; /* Flexbox layout */
+  gap: 1rem; /* Gap between links */
+}
+
+/* Individual social link styling */
+.social-links a {
+  width: 2rem; /* Width of the link */
+  height: 2rem; /* Height of the link */
+  background-color: var(--color-gray-800); /* Dark gray background */
+  border-radius: 50%; /* Rounded corners */
+  display: flex; /* Flexbox layout */
+  align-items: center; /* Align items vertically */
+  justify-content: center; /* Align items horizontally */
+  color: var(--color-gray-400); /* Text color for the link */
+  text-decoration: none; /* No underline */
+  transition: all 0.2s; /* Smooth transition for all properties */
+}
+
+/* Social link hover effect */
+.social-links a:hover {
+  background-color: var(--color-gray-700); /* Darker gray background on hover */
+  color: white; /* White text on hover */
+}
+
+/* Footer links grid */
+.footer-links {
+  display: grid; /* Grid layout */
+  grid-template-columns: repeat(4, 1fr); /* Four columns */
+  gap: 2rem; /* Gap between columns */
+}
+
+/* Footer link group heading */
+.link-group h3 {
+  font-size: 1rem; /* Font size for the heading */
+  margin-bottom: 1.5rem; /* Margin below the heading */
+}
+
+/* Footer link list */
+.link-group ul {
+  list-style: none; /* No bullet points */
+}
+
+/* Footer link list item */
+.link-group li {
+  margin-bottom: 0.75rem; /* Margin below each list item */
+}
+
+/* Footer link styling */
+.link-group a {
+  color: var(--color-gray-400); /* Text color for the link */
+  text-decoration: none; /* No underline */
+  transition: color 0.2s; /* Smooth transition for text color */
+}
+
+/* Footer link hover effect */
+.link-group a:hover {
+  color: white; /* White text on hover */
+}
+
+/* Footer bottom section */
+.footer-bottom {
+  padding-top: 2rem; /* Padding at the top */
+  border-top: 1px solid var(--color-gray-800); /* Dark gray top border */
+  display: flex; /* Flexbox layout */
+  justify-content: space-between; /* Space between items */
+  align-items: center; /* Align items vertically */
+}
+
+/* Footer copyright text */
+.footer-bottom p {
+  color: var(--color-gray-400); /* Text color for the paragraph */
+}
+
+/* Footer meta links */
+.footer-meta {
+  display: flex; /* Flexbox layout */
+  gap: 1.5rem; /* Gap between meta items */
+}
+
+/* Footer meta link styling */
+.footer-meta a {
+  color: var(--color-gray-400); /* Text color for the link */
+  text-decoration: none; /* No underline */
+  transition: color 0.2s; /* Smooth transition for text color */
+}
+
+/* Footer meta link hover effect */
+.footer-meta a:hover {
+  color: white; /* White text on hover */
+}
+
+/* Responsive Design */
+/* Tablet breakpoint adjustments */
+@media (max-width: 1024px) {
+  .hero .container {
+    grid-template-columns: 1fr; /* Single column */
+    text-align: center; /* Centered text */
+  }
+  
+  .hero-buttons {
+    justify-content: center; /* Centered buttons */
+  }
+  
+  .feature-item {
+    justify-content: center; /* Centered feature items */
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr; /* Single column */
+  }
+}
+
+/* Mobile breakpoint adjustments */
+@media (max-width: 768px) {
+    .nav-links {
+    display: none;           /* keep hidden by default */
+    flex-direction: column;  /* ADD THIS: stack links vertically */
+    position: absolute;      /* ADD THIS: so menu can dropdown */
+    top: 60px;               /* ADD THIS: adjust according to your header height */
+    right: 10px;             /* ADD THIS: align menu right (or left if you prefer) */
+    background-color: white; /* ADD THIS: add background to menu */
+    width: 150px;            /* ADD THIS: set menu width */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* ADD THIS: optional shadow */
+    border-radius: 4px;      /* ADD THIS: optional rounded corners */
+    padding: 1rem;           /* ADD THIS: optional padding inside menu */
+    z-index: 1000;           /* ADD THIS: keep menu on top */
+  }
+  
+  .mobile-menu-btn {
+    display: block; /* Show mobile menu button */
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr; /* Single column */
+  }
+  
+  .footer-links {
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+  }
+  
+  .footer-bottom {
+    flex-direction: column; /* Column direction */
+    gap: 1rem; /* Gap between items */
+    text-align: center; /* Centered text */
+  }
+}
+
+/* Small mobile breakpoint adjustments */
+@media (max-width: 640px) {
+  .hero-content h1 {
+    font-size: 2.25rem; /* Smaller font size for the heading */
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr; /* Single column */
+  }
+  
+  .footer-links {
+    grid-template-columns: 1fr; /* Single column */
+  }
+
+  
+}

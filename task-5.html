@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <style>
+    /* Reset box-sizing for consistent rendering */
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Basic body styling */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Main container for the app */
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    /* Header styling */
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    /* Grouping input and button */
+    .input-group {
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    /* Input field styling */
+    .input-group input {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    /* Add button styling */
+    .input-group button {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Button hover effect */
+    .input-group button:hover {
+      background-color: #218838;
+    }
+
+    /* Task list styling */
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    /* Individual task item */
+    li {
+      padding: 10px;
+      background-color: #fafafa;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 5px;
+    }
+
+    /* Style for completed tasks */
+    .completed {
+      text-decoration: line-through;
+      color: #888;
+    }
+
+    /* Action buttons (complete, edit, delete) */
+    .actions button {
+      margin-left: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    /* Hover effect for action buttons */
+    .actions button:hover {
+      color: red;
+    }
+
+    /* Responsive layout for smaller screens */
+    @media (max-width: 600px) {
+      .input-group {
+        flex-direction: column;
+      }
+      .input-group input, .input-group button {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>To-Do List</h1>
+    <!-- Input section to add new tasks -->
+    <div class="input-group">
+      <input type="text" id="taskInput" placeholder="Add new task">
+      <button onclick="addTask()">Add</button>
+    </div>
+    <!-- Task list container -->
+    <ul id="taskList"></ul>
+  </div>
+
+  <script>
+    // Function to add a new task to the list
+    function addTask() {
+      const input = document.getElementById('taskInput'); // Get the input element
+      const taskText = input.value.trim(); // Remove any whitespace
+
+      // Do nothing if input is empty
+      if (!taskText) return;
+
+      // Create a new <li> element for the task
+      const li = document.createElement('li');
+
+      // Define the inner HTML of the task item with buttons for actions
+      li.innerHTML = `
+        <span class="task-text">${taskText}</span>
+        <div class="actions">
+          <button onclick="toggleComplete(this)">&#10003;</button> <!-- Mark as complete -->
+          <button onclick="editTask(this)">&#9998;</button> <!-- Edit task -->
+          <button onclick="deleteTask(this)">&#10060;</button> <!-- Delete task -->
+        </div>
+      `;
+
+      // Append the new task to the task list
+      document.getElementById('taskList').appendChild(li);
+
+      // Clear the input field
+      input.value = '';
+    }
+
+    // Function to mark a task as completed or uncompleted
+    function toggleComplete(btn) {
+      const li = btn.closest('li'); // Get the parent list item
+      li.classList.toggle('completed'); // Toggle the "completed" CSS class
+    }
+
+    // Function to delete a task from the list
+    function deleteTask(btn) {
+      btn.closest('li').remove(); // Remove the parent list item from the DOM
+    }
+
+    // Function to edit the text of an existing task
+    function editTask(btn) {
+      const li = btn.closest('li'); // Get the parent list item
+      const taskText = li.querySelector('.task-text'); // Get the text element
+      const newTask = prompt("Edit task:", taskText.textContent); // Prompt user for new task
+
+      // If user provided new valid input, update the task text
+      if (newTask !== null && newTask.trim() !== '') {
+        taskText.textContent = newTask;
+      }
+    }
+  </script>
+</body> 
+</html>

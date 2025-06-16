@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Card</title>
+  <style>
+    body {
+      background-color: #d4eafc;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: auto;
+    }
+    .card-container {
+      position: relative;
+    }
+    .badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: crimson;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: bold;
+      z-index: 2;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+    .badge:hover {
+      transform: scale(1.1);
+    }
+    .card {
+      background-color: #fff;
+      width: 300px;
+      max-width: 90%;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .card h2 {
+      margin: 15px 0 5px;
+      font-size: 22px;
+      color: #333;
+      font-weight: 400;
+    }
+    .card p {
+      color: #555;
+      font-size: 18px;
+      margin: 5px 0 10px;
+      font-weight: 400;
+    }
+    .card button {
+      background-color: #515abd;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .card button:hover {
+      background-color: #004fa3;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .card button:active {
+      transform: scale(0.95);
+    }
+    @media (max-width: 400px) {
+      .card {
+        margin: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card-container">
+    <div class="badge">Sale</div>
+    <div class="card">
+      <img
+        src="https://imgs.search.brave.com/9Qk6nuPqUpAFTAO0EKHH0B6VQGSs1ugoU1_DXYSG9EI/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAzLzI4LzM3Lzkz/LzM2MF9GXzMyODM3/OTM0N194RUtnRUIy/d2tqQUptY3FTVG1y/ZzR1S3hmV3JsTDdE/OS5qcGc"
+        alt="High-quality Wireless Headphones"
+      />
+      <h2>Wireless Headphones</h2>
+      <p><strong>₹2,499</strong></p>
+      <button>Add to Cart</button>
+    </div>
+  </div>
+</body>
+</html>

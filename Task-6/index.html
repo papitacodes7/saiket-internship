@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<!-- Declares the document type and version of HTML -->
+
+<html lang="en">
+<!-- Root of the document with language attribute set to English -->
+
+<head>
+  <!-- Meta information about the webpage -->
+  <meta charset="UTF-8" />
+  <!-- Sets character encoding for the document -->
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Ensures responsive design on mobile devices -->
+
+  <meta name="description" content="Quantum - The next-generation productivity tool designed to supercharge your team's performance." />
+  <!-- Provides a summary of the page for search engines and previews -->
+
+  <title>Quantum - Elevate Your Workflow</title>
+  <!-- Title shown in browser tab -->
+
+  <!-- Preconnect to speed up loading of external fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Google Fonts (Inter) for typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Navigation bar -->
+  <nav class="navbar">
+    <div class="container">
+      <!-- Branding / Logo -->
+      <div class="nav-logo">
+        <!-- SVG icon logo -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+        </svg>
+        <span>Quantum</span>
+      </div>
+
+      <!-- Mobile menu button for responsive design -->
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Navigation links -->
+      <div class="nav-links">
+        <a href="#" id="home-link">Home</a>
+        <a href="#features">Features</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+        <button class="btn btn-primary">Get Started</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero section: introduction banner -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <!-- Main headline -->
+          <h1>Elevate Your Workflow with <span>Quantum</span></h1>
+          <p>The next-generation productivity tool designed to supercharge your team's performance. Streamline tasks, collaborate seamlessly, and achieve more together.</p>
+
+          <!-- Key highlights -->
+          <div class="hero-features">
+            <div class="feature-item">
+              <div class="check-icon">✓</div>
+              <span>No credit card required</span>
+            </div>
+            <div class="feature-item">
+              <div class="check-icon">✓</div>
+              <span>Free 14-day trial</span>
+            </div>
+            <div class="feature-item">
+              <div class="check-icon">✓</div>
+              <span>24/7 support</span>
+            </div>
+          </div>
+
+          <!-- Call-to-action buttons -->
+          <div class="hero-buttons">
+            <button class="btn btn-primary">
+              Get Started
+              <!-- Arrow icon inside button -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+            <button class="btn btn-secondary">See Demo</button>
+          </div>
+        </div>
+
+        <!-- Hero image with a stat card -->
+        <div class="hero-image">
+          <img src="https://images.pexels.com/photos/8636601/pexels-photo-8636601.jpeg" alt="Quantum dashboard preview">
+          <div class="stats-card">
+            <div class="stats-number">+135%</div>
+            <div class="stats-label">Productivity boost</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features section -->
+    <section id="features" class="features">
+      <div class="container">
+        <div class="section-header">
+          <h2>Powerful Features</h2>
+          <p>Discover how Quantum can transform your productivity with these powerful capabilities</p>
+        </div>
+
+        <!-- Features grid -->
+        <div class="features-grid">
+          <!-- Each feature is a card -->
+          <div class="feature-card" data-id="1">
+            <div class="feature-icon">⚡</div>
+            <h3>Lightning Fast Performance</h3>
+            <p>Optimized for speed with real-time updates and instant synchronization across all your devices.</p>
+          </div>
+          <div class="feature-card" data-id="2">
+            <div class="feature-icon">👥</div>
+            <h3>Seamless Collaboration</h3>
+            <p>Work together with your team in real-time with intuitive sharing and permission controls.</p>
+          </div>
+          <div class="feature-card" data-id="3">
+            <div class="feature-icon">📊</div>
+            <h3>Advanced Analytics</h3>
+            <p>Gain insights with powerful reporting tools that help you track progress and identify trends.</p>
+          </div>
+          <div class="feature-card" data-id="4">
+            <div class="feature-icon">🔄</div>
+            <h3>Customizable Workflows</h3>
+            <p>Adapt the platform to your needs with flexible templates and automation capabilities.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials section -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <h2>What Our Customers Say</h2>
+          <p>Discover how Quantum has transformed workflows for teams across industries</p>
+        </div>
+
+        <div class="testimonials-slider">
+          <!-- Single testimonial -->
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg" alt="Sarah Johnson" class="testimonial-avatar">
+              <div class="testimonial-info">
+                <h3>Sarah Johnson</h3>
+                <p class="role">Marketing Director</p>
+                <p class="company">TechCorp</p>
+                <div class="rating">★★★★★</div>
+              </div>
+              <blockquote>
+                <p>Quantum has revolutionized how our marketing team collaborates. We've seen a 40% increase in campaign turnaround times since implementation.</p>
+              </blockquote>
+            </div>
+          </div>
+
+          <!-- Slider navigation controls -->
+          <div class="slider-controls">
+            <button class="prev-btn" aria-label="Previous testimonial">←</button>
+            <div class="slider-dots"></div>
+            <button class="next-btn" aria-label="Next testimonial">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2>Get In Touch</h2>
+          <p>Have questions about Quantum? We're here to help you get started.</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact info (static text) -->
+          <div class="contact-info">
+            <h3>Contact Information</h3>
+            <div class="info-items">
+              <div class="info-item">
+                <div class="info-icon">✉️</div>
+                <div>
+                  <p class="label">Email</p>
+                  <p>contact@quantum.io</p>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon">📲</div>
+                <div>
+                  <p class="label">Phone</p>
+                  <p>+91 6350xxxxxx</p>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon">📍</div>
+                <div>
+                  <p class="label">Address</p>
+                  <p>Udaipur, Rajasthan</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact form -->
+          <form id="contact-form" class="contact-form">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+                <span class="error-message"></span>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <span class="error-message"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+              <span class="error-message"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer section -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <!-- Brand and social links -->
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <!-- Logo icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            </svg>
+            <span>Quantum</span>
+          </div>
+          <p>The next-generation productivity tool designed to supercharge your team's performance.</p>
+
+          <!-- Placeholder social icons -->
+          <div class="social-links">
+            <a href="#" aria-label="Twitter">🐤</a>
+            <a href="#" aria-label="Facebook">👱‍♂️</a>
+            <a href="#" aria-label="Instagram">ℹ️</a>
+            <a href="http://www.linkedin.com/in/param-chauhan-99749a32b" aria-label="LinkedIn">💁</a>
+          </div>
+        </div>
+
+        <!-- Footer navigation links -->
+        <div class="footer-links">
+          <div class="link-group">
+            <h3>Product</h3>
+            <ul>
+              <li><a href="#">Features</a></li>
+              <li><a href="#">Pricing</a></li>
+              <li><a href="#">Integrations</a></li>
+              <li><a href="#">Changelog</a></li>
+            </ul>
+          </div>
+          <div class="link-group">
+            <h3>Resources</h3>
+            <ul>
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Community</a></li>
+              <li><a href="#">Help Center</a></li>
+            </ul>
+          </div>
+          <div class="link-group">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="link-group">
+            <h3>Legal</h3>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Cookie Policy</a></li>
+              <li><a href="#">Security</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer bottom bar -->
+      <div class="footer-bottom">
+        <p>&copy; 2024 Quantum. All rights reserved.</p>
+        <div class="footer-meta">
+          <a href="#language">English (US)</a>
+          <a href="#currency">USD ($)</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Link to external JavaScript file -->
+  <script src="script.js"></script>
+</body>
+</html>

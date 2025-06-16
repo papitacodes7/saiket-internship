@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz App</title>
+
+  <style>
+    /* Reset box-sizing for consistent layout */
+    * {
+      box-sizing: border-box;   
+    }
+
+    /* Set up a basic body style */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* Main quiz container */
+    .quiz-container {
+      background: rgb(255, 255, 255);
+      max-width: 500px;
+      width: 100%;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    /* Question text */
+    h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #343a40;
+    }
+
+    /* Each option */
+    .option {
+      margin-bottom: 12px;
+      background: #f1f3f5;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    /* Highlight selected option */
+    .option.selected {
+      background-color: #cfe2ff;
+    }
+
+    /* Radio button spacing */
+    .option input {
+      margin-right: 10px;
+    }
+
+    /* Button styling */
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      width: 100%;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    /* Result, progress and feedback styling */
+    .result, .progress, .feedback {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #212529;
+    }
+
+    /* Progress bar background */
+    .progress-bar {
+      background: #e9ecef;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      height: 10px;
+    }
+
+    /* Fill of the progress bar */
+    .progress-bar-fill {
+      height: 100%;
+      width: 0;
+      background: #007bff;
+      transition: width 0.3s ease;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Quiz UI Structure -->
+  <div class="quiz-container">
+    <div class="progress-bar">
+      <div id="progress-bar-fill" class="progress-bar-fill"></div>
+    </div>
+    <div class="progress" id="progress">Question 1 of 3</div>
+    <h2 id="question">Loading...</h2>
+    <div id="options"></div>
+    <p class="feedback" id="feedback"></p>
+    <button id="nextBtn">Next</button>
+  </div>
+
+  <script>
+    // Quiz questions, options, and correct answers
+    const quizData = [
+      {
+        question: "What is the capital of France?",
+        options: ["Berlin", "Madrid", "Paris", "Lisbon"],
+        answer: "Paris"
+      },
+      {
+        question: "Which planet is known as the Red Planet?",
+        options: ["Earth", "Mars", "Jupiter", "Saturn"],
+        answer: "Mars"
+      },
+      {
+        question: "Who wrote 'Romeo and Juliet'?",
+        options: ["Shakespeare", "Tolstoy", "Hemingway", "Tagore"],
+        answer: "Shakespeare"
+      }
+    ];
+
+    // State tracking variables
+    let currentQuestion = 0; // Current question index
+    let score = 0; // Number of correct answers
+    let answered = false; // Prevents selecting answer after submission
+
+    // DOM references
+    const questionEl = document.getElementById("question");
+    const optionsEl = document.getElementById("options");
+    const feedbackEl = document.getElementById("feedback");
+    const progressEl = document.getElementById("progress");
+    const progressBarFill = document.getElementById("progress-bar-fill");
+    const nextBtn = document.getElementById("nextBtn");
+
+    // Shuffle options randomly
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    // Load a question on the screen
+    function loadQuestion() {
+      answered = false; // Reset answered state
+      const questionData = quizData[currentQuestion];
+
+      // Set question and progress text
+      questionEl.innerText = questionData.question;
+      progressEl.innerText = `Question ${currentQuestion + 1} of ${quizData.length}`;
+
+      // Update progress bar
+      progressBarFill.style.width = `${((currentQuestion) / quizData.length) * 100}%`;
+
+      // Shuffle and display options
+      const shuffledOptions = shuffle([...questionData.options]);
+      optionsEl.innerHTML = shuffledOptions.map(opt =>
+        `<div class="option">
+          <label><input type="radio" name="answer" value="${opt}"> ${opt}</label>
+        </div>`
+      ).join("");
+
+      // Hide previous feedback
+      feedbackEl.textContent = "";
+      feedbackEl.style.display = "none";
+
+      // Handle option selection
+      document.querySelectorAll(".option").forEach(option => {
+        option.addEventListener("click", () => {
+          if (answered) return; // Prevent changing after answering
+          document.querySelectorAll(".option").forEach(o => o.classList.remove("selected"));
+          option.classList.add("selected");
+          option.querySelector("input").checked = true;
+        });
+      });
+    }
+
+    // Display final result
+    function showResult() {
+      const container = document.querySelector(".quiz-container");
+      container.innerHTML = `
+        <h2>Quiz Completed</h2>
+        <p class="result">You scored ${score} out of ${quizData.length}</p>
+        <p class="result">${
+          score === quizData.length ? "🎉 Excellent!" :
+          score >= 2 ? "🙂 Good Job!" : "😐 Try Again!"}</p>
+        <button onclick="location.reload()">Restart Quiz</button>
+      `;
+    }
+
+    // Handle Next button click
+    nextBtn.addEventListener("click", () => {
+      if (answered) return; // Prevent multiple clicks
+
+      const selected = document.querySelector('input[name="answer"]:checked');
+      if (!selected) {
+        alert("Please select an answer before proceeding.");
+        return;
+      }
+
+      answered = true; // Mark question as answered
+
+      // Check if the answer is correct
+      const isCorrect = selected.value === quizData[currentQuestion].answer;
+      if (isCorrect) {
+        score++;
+        feedbackEl.textContent = "Correct!";
+        feedbackEl.style.color = "green";
+      } else {
+        feedbackEl.textContent = `Wrong! Correct answer is: ${quizData[currentQuestion].answer}`;
+        feedbackEl.style.color = "red";
+      }
+
+      // Show feedback
+      feedbackEl.style.display = "block";
+
+      // Wait 1 second before loading next question
+      setTimeout(() => {
+        currentQuestion++;
+        if (currentQuestion < quizData.length) {
+          loadQuestion();
+        } else {
+          progressBarFill.style.width = '100%';
+          showResult();
+        }
+      }, 1000);
+    });
+
+    // Initialize quiz on page load
+    loadQuestion();
+  </script>
+</body>
+</html>
